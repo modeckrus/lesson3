@@ -18,3 +18,10 @@ func Summattor(a int, b int, f func(int, int) int) int {
 func AddSummattor(a, b int) int {
 	return Summattor(a, b, Add)
 }
+
+type AddI interface {
+	Add(a, b int) int
+}
+
+type Adder struct {
+}
