@@ -1,4 +1,3 @@
-//
 // REST
 // ====
 // This example demonstrates a HTTP REST web service with some fixture data.
@@ -36,7 +35,6 @@
 //
 // $ curl http://localhost:3333/articles
 // [{"id":"2","title":"sup"},{"id":"97","title":"awesomeness"}]
-//
 package main
 
 import (
@@ -76,11 +74,8 @@ const (
 	CtxKeyLogger CtxKey = iota
 )
 
-var lemonsKey = attribute.Key("ex.com/lemons")
-
 type App struct {
 	sugarLogger *zap.SugaredLogger
-	config      Config
 }
 
 // nolint
@@ -719,9 +714,9 @@ func ErrRender(err error) render.Renderer {
 // nolint
 var ErrNotFound = &ErrResponse{HTTPStatusCode: 404, StatusText: "Resource not found."}
 
-//--
+// --
 // Data model objects and persistence mocks:
-//--
+// --
 // nolint
 // User data model
 type User struct {

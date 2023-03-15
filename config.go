@@ -24,13 +24,3 @@ func getEnvBool(key string, defaultVal bool) bool {
 	}
 	return defaultVal
 }
-
-func getEnvInt64(key string, defaultVal int64) int64 {
-	if envVal, ok := os.LookupEnv(key); ok {
-		envInt64, err := strconv.ParseInt(envVal, 10, 64)
-		if err == nil {
-			return envInt64
-		}
-	}
-	return defaultVal
-}

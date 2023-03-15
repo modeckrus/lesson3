@@ -3,6 +3,7 @@ package client
 import (
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 type Client struct {
@@ -11,12 +12,17 @@ type Client struct {
 }
 
 type User struct {
-	ID   int64  `json:"id"`
-	Name string `json:"name"`
+	ID      int64      `json:"id"`
+	Name    string     `json:"name"`
+	Deleted *time.Time `json:"deleted"`
 }
 
 func (u *User) isExist() (bool, error) {
-	return true, nil
+	if u.Deleted == nil {
+		return true, nil
+	}
+
+	return false, nil
 }
 
 func (c *Client) Ping() (string, error) {
